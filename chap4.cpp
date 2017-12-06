@@ -31,6 +31,18 @@ short Parity1(unsigned long x) {
 // Time complexity: O(n)
 // Space complexity: O(1)
 
+short Parity2(unsigned long x) {
+	short result = 0;
+	while (x) {
+		result ^= 1;
+		x &= x - 1; // Drops the lowest set bit of x.
+	}
+	return result;
+}
+// Time complexity: O(n)
+// Space complexity: O(1)
+// Improved in the best- and average-cases
+
 int main() {
 	std::cout << "# CountBits" << std::endl;
 	std::cout << "1: " << CountBits(1) << std::endl;
@@ -41,5 +53,10 @@ int main() {
 	std::cout << "1: " << Parity1(1) << std::endl;
 	std::cout << "2: " << Parity1(2) << std::endl;
 	std::cout << "3: " << Parity1(3) << std::endl;
+
+	std::cout << "# Parity2" << std::endl;
+	std::cout << "1: " << Parity2(1) << std::endl;
+	std::cout << "2: " << Parity2(2) << std::endl;
+	std::cout << "3: " << Parity2(3) << std::endl;
 	return 0;
 }
